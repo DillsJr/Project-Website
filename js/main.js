@@ -1,6 +1,6 @@
 /**
  * PERSONAL PORTFOLIO - MAIN.JS
- * Fitur: Particles, Custom Cursor, Aurora, Music Player, GitHub Integration, Contact Form
+ * Fitur: Particles, Custom Cursor, Aurora, Music Player, Contact Form
  * Mudah dimodifikasi - Edit bagian CONFIG di bawah untuk customize data
  */
 
@@ -31,26 +31,6 @@ const CONFIG = {
       category: 'web',
       description: 'Analytics dashboard real-time',
       image: 'https://images.unsplash.com/photo-1460925895917-adf4e565db18?q=80&w=600&auto=format&fit=crop'
-    }
-  ],
-  blog: [
-    {
-      title: 'Cara Membuat Animasi CSS yang Menarik',
-      date: '15 Jul 2026',
-      image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=600&auto=format&fit=crop',
-      excerpt: 'Tutorial membuat animasi CSS yang smooth dan performa tinggi.'
-    },
-    {
-      title: 'JavaScript Modern: ES6+ Features',
-      date: '12 Jul 2026',
-      image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=600&auto=format&fit=crop',
-      excerpt: 'Pelajari fitur-fitur terbaru JavaScript yang wajib diketahui.'
-    },
-    {
-      title: 'Web Performance: Optimization Tips',
-      date: '10 Jul 2026',
-      image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=600&auto=format&fit=crop',
-      excerpt: 'Teknik untuk membuat website lebih cepat dan responsif.'
     }
   ],
   playlist: [
@@ -97,50 +77,41 @@ const CONFIG = {
   ],
   gallery: [
     {
-      title: 'Mountain View',
-      category: 'fotografi',
-      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=400&auto=format&fit=crop'
+      title: 'Critical Mash',
+      category: 'olahraga',
+      image: 'https://oexmykewzfujlyrbjkut.supabase.co/storage/v1/object/public/hobbies/olahraga/Pc%20(6).jpg',
     },
     {
-      title: 'Coffee Time',
-      category: 'lifestyle',
-      image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=400&auto=format&fit=crop'
+      title: 'Night Loop',
+      category: 'olahraga',
+      image: 'https://oexmykewzfujlyrbjkut.supabase.co/storage/v1/object/public/hobbies/olahraga/IMG_20251015_223553_441.webp',
     },
     {
-      title: 'Sunset Beach',
-      category: 'fotografi',
-      image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=400&auto=format&fit=crop'
-    },
-    {
-      title: 'Music Studio',
-      category: 'musik',
-      image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=400&auto=format&fit=crop'
-    },
-    {
-      title: 'Urban Photography',
-      category: 'fotografi',
-      image: 'https://images.unsplash.com/photo-1500228299326-6c1ab1a5b20f?q=80&w=400&auto=format&fit=crop'
-    },
-    {
-      title: 'Traveling Adventure',
+      title: 'Fireman Action',
       category: 'traveling',
-      image: 'https://images.unsplash.com/photo-1530521954074-e64f47babe48?q=80&w=400&auto=format&fit=crop'
+      image: 'https://oexmykewzfujlyrbjkut.supabase.co/storage/v1/object/public/hobbies/travelling/IMG_20220430_202727_873.jpg',
     },
     {
-      title: 'Concert Vibes',
-      category: 'musik',
-      image: 'https://images.unsplash.com/photo-1511379938547-c1f69b13d835?q=80&w=400&auto=format&fit=crop'
-    },
-    {
-      title: 'Nature Exploration',
+      title: 'Street Style',
       category: 'traveling',
-      image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=400&auto=format&fit=crop'
+      image: 'https://oexmykewzfujlyrbjkut.supabase.co/storage/v1/object/public/hobbies/travelling/Gambar%20WhatsApp%202023-06-13%20pukul%2022.15.47.jpg',
+    },
+    {
+      title: 'BadBoy Vibes',
+      category: 'fotografi',
+      image: 'https://oexmykewzfujlyrbjkut.supabase.co/storage/v1/object/public/hobbies/travelling/IMG_20220401_152044_134.webp',
+    },
+    {
+      title: 'Tree Shadow',
+      category: 'fotografi',
+      image: 'https://oexmykewzfujlyrbjkut.supabase.co/storage/v1/object/public/hobbies/fotografi/IMG_20260101_182823_774.webp',
+    },
+    {
+      title: 'Blackjack Vibes',
+      category: 'fotografi',
+      image: 'https://oexmykewzfujlyrbjkut.supabase.co/storage/v1/object/public/hobbies/fotografi/IMG_20260524_181633_551.webp',
     }
-  ],
-  github: {
-    username: 'username', // GANTI dengan GitHub username Anda
-    formspreeKey: 'YOUR_FORMSPREE_KEY' // GANTI dengan key Formspree Anda
-  }
+  ]
 };
 // ===== END CONFIG =====
 
@@ -181,14 +152,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
   initModalHandlers();
   loadProjects();
-  loadBlog();
   loadCertifications();
   loadGallery();
   initMusicPlayer();
-  initGitHubStats();
   initContactForm();
   initScrollAnimations();
   initStats();
+  initEmbedAnimations();
 });
 
 // ===== THEME TOGGLE =====
@@ -340,28 +310,6 @@ function loadProjects() {
   });
 }
 
-// ===== BLOG LOADER =====
-function loadBlog() {
-  const grid = document.getElementById('blogGrid');
-  
-  if (!grid) return;
-  
-  CONFIG.blog.forEach((post, idx) => {
-    const card = document.createElement('div');
-    card.className = 'blog-card';
-    card.style.animationDelay = (idx * 0.1) + 's';
-    card.innerHTML = `
-      <img src="${post.image}" alt="${post.title}">
-      <div class="blog-content">
-        <div class="blog-date">${post.date}</div>
-        <h3>${post.title}</h3>
-        <p>${post.excerpt}</p>
-      </div>
-    `;
-    grid.appendChild(card);
-  });
-}
-
 // ===== CERTIFICATIONS LOADER =====
 function loadCertifications() {
   const grid = document.getElementById('certificationsGrid');
@@ -419,14 +367,21 @@ function loadGallery() {
   
   if (!gallery || !filterContainer) return;
   
-  // Get unique categories
-  const categories = ['semua', ...new Set(CONFIG.gallery.map(item => item.category))];
-  
+  const categories = ['semua', 'olahraga', 'traveling', 'fotografi'];
+  const galleryObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        galleryObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
   // Create filter buttons
   categories.forEach((cat, idx) => {
     const btn = document.createElement('button');
     btn.className = 'hobby-filter-btn' + (idx === 0 ? ' active' : '');
-    btn.textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
+    btn.textContent = cat === 'semua' ? 'Semua' : cat.charAt(0).toUpperCase() + cat.slice(1);
     btn.dataset.filter = cat;
     
     btn.addEventListener('click', () => {
@@ -447,11 +402,28 @@ function loadGallery() {
         div.className = 'gallery-item';
         div.style.animationDelay = (idx * 0.05) + 's';
         div.innerHTML = `
-          <img src="${item.image}" alt="${item.title}">
-          <div class="gallery-overlay">📷</div>
-          <div class="gallery-tag">${item.category}</div>
+          <a class="gallery-link" href="${item.link || '#'}" target="_blank" rel="noopener noreferrer">
+            <img src="${item.image}" alt="${item.title}">
+            <div class="gallery-overlay">
+              <span class="gallery-category">${item.category}</span>
+              <h3 class="gallery-title">${item.title}</h3>
+            </div>
+          </a>
         `;
         gallery.appendChild(div);
+        galleryObserver.observe(div);
+
+        const image = div.querySelector('img');
+        div.addEventListener('mousemove', (event) => {
+          const rect = div.getBoundingClientRect();
+          const x = (event.clientX - rect.left) / rect.width - 0.5;
+          const y = (event.clientY - rect.top) / rect.height - 0.5;
+          image.style.transform = `translate(${x * 18}px, ${y * 18}px) scale(1.08)`;
+        });
+
+        div.addEventListener('mouseleave', () => {
+          image.style.transform = 'translate(0, 0) scale(1.05)';
+        });
       });
   }
   
@@ -460,84 +432,92 @@ function loadGallery() {
 
 // ===== MUSIC PLAYER =====
 function initMusicPlayer() {
-  const playlist = document.getElementById('playlist');
+  const playlistEl = document.getElementById('playlist');
   const playBtn = document.getElementById('playBtn');
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
-  
-  if (!playlist) return;
-  
+  const loadSpotifyBtn = document.getElementById('loadSpotifyPlaylist');
+  const audio = new Audio();
+  const SPOTIFY_PLAYLIST_ID = '6fOXqkjyhLzXbAUqo2kULa'; // default playlist id (yours)
+
+  if (!playlistEl) return;
+
+  let tracks = [];
   let currentTrack = 0;
-  
-  // Load playlist
-  CONFIG.playlist.forEach((song, idx) => {
-    const item = document.createElement('div');
-    item.className = 'playlist-item' + (idx === 0 ? ' active' : '');
-    item.textContent = `${song.title} • ${song.artist}`;
-    item.addEventListener('click', () => selectTrack(idx));
-    playlist.appendChild(item);
-  });
-  
+
+  function renderPlaylist() {
+    playlistEl.innerHTML = '';
+    tracks.forEach((t, idx) => {
+      const item = document.createElement('div');
+      item.className = 'playlist-item' + (idx === currentTrack ? ' active' : '');
+      item.innerHTML = `<div class="playlist-title">${t.name}</div><div class="playlist-artist">${t.artists}</div>`;
+      item.addEventListener('click', () => selectTrack(idx));
+      playlistEl.appendChild(item);
+    });
+  }
+
   function selectTrack(idx) {
     currentTrack = idx;
-    updatePlaylist();
+    updatePlayer();
+    renderPlaylist();
+    if (tracks[idx].preview_url) {
+      audio.src = tracks[idx].preview_url;
+      audio.play();
+    }
   }
-  
-  function updatePlaylist() {
-    const items = document.querySelectorAll('.playlist-item');
-    items.forEach((item, idx) => {
-      item.classList.toggle('active', idx === currentTrack);
-    });
-    const song = CONFIG.playlist[currentTrack];
-    document.getElementById('songTitle').textContent = song.title;
-    document.getElementById('songArtist').textContent = song.artist;
-  }
-  
-  if (playBtn) playBtn.addEventListener('click', () => {
-    playBtn.textContent = playBtn.textContent === '▶' ? '⏸' : '▶';
-  });
-  
-  if (prevBtn) prevBtn.addEventListener('click', () => {
-    selectTrack((currentTrack - 1 + CONFIG.playlist.length) % CONFIG.playlist.length);
-  });
-  
-  if (nextBtn) nextBtn.addEventListener('click', () => {
-    selectTrack((currentTrack + 1) % CONFIG.playlist.length);
-  });
-  
-  updatePlaylist();
-}
 
-// ===== GITHUB STATS =====
-function initGitHubStats() {
-  const statsContainer = document.getElementById('githubStats');
-  
-  if (!statsContainer) return;
-  
-  // Fetch GitHub user info
-  fetch(`https://api.github.com/users/${CONFIG.github.username}`)
-    .then(res => res.json())
-    .then(data => {
-      statsContainer.innerHTML = `
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px;">
-          <div style="text-align:center;">
-            <div style="font-size:24px;font-weight:700;color:var(--accent-1);">${data.public_repos}</div>
-            <div style="font-size:12px;color:var(--muted);">Public Repos</div>
-          </div>
-          <div style="text-align:center;">
-            <div style="font-size:24px;font-weight:700;color:var(--accent-2);">${data.followers}</div>
-            <div style="font-size:12px;color:var(--muted);">Followers</div>
-          </div>
-          <div style="text-align:center;">
-            <div style="font-size:24px;font-weight:700;color:var(--accent-3);">${data.following}</div>
-            <div style="font-size:12px;color:var(--muted);">Following</div>
-          </div>
-        </div>
-      `;
-    })
-    .catch(() => {
-      statsContainer.innerHTML = '<p>Silahkan ganti USERNAME di CONFIG dengan username GitHub Anda</p>';
-    });
+  function updatePlayer() {
+    const song = tracks[currentTrack] || { name: '—', artists: '—' };
+    document.getElementById('songTitle').textContent = song.name;
+    document.getElementById('songArtist').textContent = song.artists;
+    const img = document.querySelector('#playerAlbum img');
+    if (song.album_image && img) img.src = song.album_image;
+  }
+
+  // Fallback: load static CONFIG.playlist if no Spotify data yet
+  if (CONFIG.playlist && CONFIG.playlist.length && tracks.length === 0) {
+    tracks = CONFIG.playlist.map(p => ({ name: p.title, artists: p.artist, preview_url: p.url || null, album_image: p.image || null }));
+    renderPlaylist();
+    updatePlayer();
+  }
+
+  // Play/pause control
+  if (playBtn) playBtn.addEventListener('click', () => {
+    if (audio.paused) { audio.play(); playBtn.textContent = '⏸'; } else { audio.pause(); playBtn.textContent = '▶'; }
+  });
+
+  if (prevBtn) prevBtn.addEventListener('click', () => {
+    if (tracks.length === 0) return;
+    selectTrack((currentTrack - 1 + tracks.length) % tracks.length);
+  });
+  if (nextBtn) nextBtn.addEventListener('click', () => {
+    if (tracks.length === 0) return;
+    selectTrack((currentTrack + 1) % tracks.length);
+  });
+
+  // Load playlist from server Spotify endpoint
+  async function loadSpotifyPlaylist() {
+    playlistEl.innerHTML = '<div class="loading">Memuat playlist Spotify...</div>';
+    try {
+      const res = await fetch(`/api/playlist?id=${SPOTIFY_PLAYLIST_ID}`);
+      if (!res.ok) throw new Error('not ok');
+      const data = await res.json();
+      tracks = data.items.map(i => ({
+        name: i.name,
+        artists: i.artists,
+        preview_url: i.preview_url,
+        album_image: i.album_image
+      }));
+      currentTrack = 0;
+      renderPlaylist();
+      updatePlayer();
+    } catch (err) {
+      playlistEl.innerHTML = '<div class="error">Gagal memuat dari Spotify. Silakan klik Login ke Spotify dahulu.</div>';
+      console.error(err);
+    }
+  }
+
+  if (loadSpotifyBtn) loadSpotifyBtn.addEventListener('click', loadSpotifyPlaylist);
 }
 
 // ===== CONTACT FORM =====
@@ -582,7 +562,7 @@ function initScrollAnimations() {
     });
   }, { threshold: 0.1 });
   
-  document.querySelectorAll('.project-card, .blog-card, .skill-tag').forEach(el => {
+  document.querySelectorAll('.project-card, .skill-tag').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -641,6 +621,29 @@ function initModalHandlers() {
     if (e.key === 'Escape') closeCertModal();
   });
 }
+
+// ===== EMBED REVEAL ANIMATIONS =====
+function initEmbedAnimations() {
+  const embeds = document.querySelectorAll('.spotify-grid .embed');
+  if (!embeds || embeds.length === 0) return;
+
+  embeds.forEach((el, idx) => {
+    // staggered transition delay
+    el.style.transitionDelay = `${idx * 120}ms`;
+  });
+
+  const obs = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  embeds.forEach(el => obs.observe(el));
+}
+
 
 // ===== SMOOTH SCROLL =====
 document.querySelectorAll('a[href^="#"]').forEach(a => {

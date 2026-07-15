@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>AhRo KyD — Personal Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Calistoga:wght@400&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Calistoga:wght@400&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
   <!-- Preloader -->
   <div class="preloader" id="preloader">
     <div class="preloader-inner">
       <div class="preloader-logo">
-        <span class="char c0">A</span><span class="char c1">h</span><span class="char c2">R</span><span class="char c3">o</span>
+        <span class="char c0">A</span><span class="char c1">h</span><span class="char c2">R</span><span
+          class="char c3">o</span>
       </div>
       <p class="preloader-text">Loading...</p>
     </div>
@@ -39,7 +44,7 @@
           <li><a href="#certifications">Sertifikasi</a></li>
           <li><a href="#hobbies">Hobi</a></li>
           <li><a href="#projects">Proyek</a></li>
-          <li><a href="#blog">Blog</a></li>
+          <li><a href="#music">Playlist</a></li>
           <li><a href="#contact">Kontak</a></li>
         </ul>
       </nav>
@@ -57,45 +62,68 @@
       </div>
       <div class="hero-inner">
         <h1 class="hero-title" id="heroTitle">AhRo</h1>
-        <p class="hero-sub">Kreator • Developer • Fotografer</p>
+        <p class="hero-sub">Developer • Creator • Designer</p>
         <p class="hero-desc">Mengeksplorasi teknologi dan seni melalui kode & visual.</p>
         <a class="btn btn-primary" href="#projects">Lihat Karya</a>
       </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section">
+    <section id="about" class="section about-section">
       <div class="wrap">
-        <h2>Tentang Saya</h2>
+        <div class="about-header">
+          <span class="about-tag">ABOUT ME</span>
+          <h2>Menggabungkan Kode dengan Estetika Sinematik</h2>
+        </div>
         <div class="about-grid">
-          <div class="about-text">
-            <p class="lead">Saya adalah seorang developer frontend yang menyukai desain, animasi, dan user experience. Passionate tentang membuat web yang tidak hanya indah tapi juga fungsional.</p>
-            <div class="skills">
-              <h3>Skills</h3>
-              <div class="skill-grid">
-                <span class="skill-tag">HTML5</span>
-                <span class="skill-tag">CSS3</span>
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">React</span>
-                <span class="skill-tag">UI/UX</span>
-                <span class="skill-tag">Figma</span>
-                <span class="skill-tag">Adobe Illustrator</span>
-                <span class="skill-tag">Adobe Photoshop</span>
+          <div class="about-visual">
+            <div class="profile-card">
+              <div class="photo-border">
+                <div class="photo-frame">
+                  <img src="https://oexmykewzfujlyrbjkut.supabase.co/storage/v1/object/public/picture/IMG_0957.JPG"
+                    alt="About me photo">
+                  <div class="photo-glow"></div>
+                </div>
+                <div class="polaroid-caption">
+                  <span style="text-align: center;">Developer • Illustrator • Designer</span>
+                </div>
               </div>
+              <div class="sticker">HELLO!!</div>
+              <div class="scribble"></div>
             </div>
           </div>
-          <div class="about-stats">
-            <div class="stat">
-              <div class="stat-number" data-target="70">0</div>
-              <div class="stat-label">Proyek Selesai</div>
+          <div class="about-copy">
+            <div class="about-kicker">Cerita dibalik layar</div>
+            <h3 class="about-title">Hi!! Saya AhRo</h3>
+            <p class="about-lead">Misi saya sederhana: menciptakan situs web yang tidak hanya berfungsi dengan sempurna,
+              tetapi juga meninggalkan kesan mendalam melalui estetika visual yang bersih dan modern. Setiap halaman
+              adalah ruang yang ingin saya buat terasa bernafas melalui warna, tipografi, dan gerakan
+              halus.</p>
+            <div class="about-points">
+              <div class="point">
+                <span class="point-title">Story Telling</span>
+                <p>Saat tidak sedang mengetik kode atau memikirkan tata letak desain, Anda kemungkinan besar akan
+                  menemukan saya sedang menikmati segelas minuman hangat, memperbarui playlist favorit di Spotify, atau
+                  menjelajahi sudut kota untuk mencari inspirasi baru.</p>
+              </div>
+              <div class="point">
+                <span class="point-title">Story-driven UI</span>
+                <p>Membuat setiap bagian halaman bergerak seperti sebuah scene, bukan sekadar sekumpulan komponen.</p>
+              </div>
             </div>
-            <div class="stat">
-              <div class="stat-number" data-target="50">0</div>
-              <div class="stat-label">Happy Clients</div>
-            </div>
-            <div class="stat">
-              <div class="stat-number" data-target="3">0</div>
-              <div class="stat-label">Tahun Experience</div>
+            <div class="about-stats cinematic-stats">
+              <div class="stat">
+                <div class="stat-number" data-target="70">0</div>
+                <div class="stat-label">Proyek Selesai</div>
+              </div>
+              <div class="stat">
+                <div class="stat-number" data-target="50">0</div>
+                <div class="stat-label">Happy Clients</div>
+              </div>
+              <div class="stat">
+                <div class="stat-number" data-target="3">0</div>
+                <div class="stat-label">Tahun Experience</div>
+              </div>
             </div>
           </div>
         </div>
@@ -115,7 +143,11 @@
     <!-- Hobbies Gallery Section -->
     <section id="hobbies" class="section">
       <div class="wrap">
-        <h2>Galeri Hobi Saya</h2>
+        <div class="section-header">
+          <h2>Galeri Hobi Saya</h2>
+          <p class="section-lead">Hobi hanya menyisakan olahraga, traveling, dan fotografi dalam komposisi visual yang
+            tegas dan sinematik.</p>
+        </div>
         <div class="hobbies-filter" id="hobbiesFilter">
           <!-- Filter buttons akan di-load dari JS -->
         </div>
@@ -141,53 +173,35 @@
       </div>
     </section>
 
-    <!-- Blog Section -->
-    <section id="blog" class="section">
-      <div class="wrap">
-        <h2>Blog & Artikel</h2>
-        <div class="blog-grid" id="blogGrid">
-          <!-- Blog akan di-load dari JS -->
-        </div>
-      </div>
-    </section>
-
-    <!-- Music Player Section -->
+    <!-- Music Player Section (Spotify Embed only) -->
     <section id="music" class="section dark">
       <div class="wrap">
-        <h2>Playlist Favorit</h2>
-        <div class="music-container">
-          <div class="player-card">
-            <div class="player-album" id="playerAlbum">
-              <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=400&auto=format&fit=crop" alt="Album">
-            </div>
-            <div class="player-info">
-              <h3 id="songTitle">Loading...</h3>
-              <p id="songArtist">Loading...</p>
-              <div class="player-controls">
-                <button id="prevBtn">⏮</button>
-                <button id="playBtn">▶</button>
-                <button id="nextBtn">⏭</button>
-              </div>
-              <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
-              </div>
-            </div>
-          </div>
-          <div class="playlist" id="playlist">
-            <!-- Playlist akan di-load dari JS -->
-          </div>
-        </div>
-      </div>
-    </section>
+        <h2>Playlist Favorit (Spotify Embed)</h2>
+        <p class="lead">Berikut adalah playlist favorit saya yang diembed dari Spotify.</p>
 
-    <!-- GitHub Stats Section -->
-    <section id="github" class="section">
-      <div class="wrap">
-        <h2>GitHub Contributions</h2>
-        <div class="github-stats" id="githubStats">
-          <p class="loading">Loading GitHub data...</p>
+        <div class="spotify-grid">
+
+          <div class="embed">
+            <div class="embed-label">Afterhours / Mellow</div>
+            <iframe src="https://open.spotify.com/embed/playlist/2zkOb79U9D0rctJhI3d6Bt" width="100%" height="380"
+              frameborder="0" allow="encrypted-media" loading="lazy"></iframe>
+          </div>
+
+          <div class="embed">
+            <div class="embed-label">Chill / Vibes</div>
+            <iframe src="https://open.spotify.com/embed/playlist/4w2PgI6J57j8ODxvfVyHXa" width="100%" height="380"
+              frameborder="0" allow="encrypted-media" loading="lazy"></iframe>
+          </div>
+
+          <div class="embed">
+            <div class="embed-label">Sinematik / Favorites</div>
+            <iframe src="https://open.spotify.com/embed/playlist/6fOXqkjyhLzXbAUqo2kULa" width="100%" height="380"
+              frameborder="0" allow="encrypted-media" loading="lazy"></iframe>
+          </div>
+
         </div>
-        <p class="github-note">Ganti USERNAME di js/main.js untuk melihat stats Anda</p>
+
+        <p class="muted">Musik yang saya dengarkan secara rutin.</p>
       </div>
     </section>
 
@@ -213,10 +227,10 @@
           </form>
           <div class="contact-info">
             <h3>Kontak Cepat</h3>
-            <p><strong>Email:</strong> <a href="mailto:email@domain.com">email@domain.com</a></p>
-            <p><strong>GitHub:</strong> <a href="https://github.com/username" target="_blank">github.com/username</a></p>
-            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/username" target="_blank">linkedin.com/in/username</a></p>
-            <p><strong>Instagram:</strong> <a href="https://instagram.com/username" target="_blank">@username</a></p>
+            <p><strong>Email:</strong> <a href="rizkysabath31@gmail.com">rizkysabath31@gmail.com</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/rizky-ar"
+                target="_blank">linkedin.com/in/rizky-ar</a></p>
+            <p><strong>Instagram:</strong> <a href="https://instagram.com/rizky_abdillah_1306" target="_blank">@rizky_abdillah_1306</a></p>
           </div>
         </div>
       </div>
@@ -244,7 +258,6 @@
     <div class="wrap">
       <p>© 2026 AhRo. Dibuat dengan ♥ dan JavaScript.</p>
       <div class="footer-links">
-        <a href="#">GitHub</a>
         <a href="#">Twitter</a>
         <a href="#">LinkedIn</a>
       </div>
@@ -254,4 +267,5 @@
   <!-- Scripts -->
   <script src="js/main.js"></script>
 </body>
+
 </html>
