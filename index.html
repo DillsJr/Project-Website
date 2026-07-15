@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Nama Anda — Personal Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Calistoga:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-logo">
+        <span class="char c0">N</span><span class="char c1">A</span><span class="char c2">M</span><span class="char c3">A</span>
+      </div>
+      <p class="preloader-text">Loading...</p>
+    </div>
+  </div>
+
+  <!-- Particles Background -->
+  <div class="particles-container" id="particlesContainer"></div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+
+  <!-- Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="wrap">
+      <a class="brand" href="#home">Nama Anda</a>
+      <nav class="nav">
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+        <ul class="nav-list" id="navList">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">Tentang</a></li>
+          <li><a href="#certifications">Sertifikasi</a></li>
+          <li><a href="#hobbies">Hobi</a></li>
+          <li><a href="#projects">Proyek</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#contact">Kontak</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="aurora">
+        <div class="aurora-light a1"></div>
+        <div class="aurora-light a2"></div>
+        <div class="aurora-light a3"></div>
+      </div>
+      <div class="hero-inner">
+        <h1 class="hero-title" id="heroTitle">Saya Nama Anda</h1>
+        <p class="hero-sub">Kreator • Developer • Fotografer</p>
+        <p class="hero-desc">Mengeksplorasi teknologi dan seni melalui kode & visual.</p>
+        <a class="btn btn-primary" href="#projects">Lihat Karya</a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <div class="wrap">
+        <h2>Tentang Saya</h2>
+        <div class="about-grid">
+          <div class="about-text">
+            <p class="lead">Saya adalah seorang developer frontend yang menyukai desain, animasi, dan user experience. Passionate tentang membuat web yang tidak hanya indah tapi juga fungsional.</p>
+            <div class="skills">
+              <h3>Skills</h3>
+              <div class="skill-grid">
+                <span class="skill-tag">HTML5</span>
+                <span class="skill-tag">CSS3</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">React</span>
+                <span class="skill-tag">UI/UX</span>
+                <span class="skill-tag">Figma</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-stats">
+            <div class="stat">
+              <div class="stat-number" data-target="100">0</div>
+              <div class="stat-label">Proyek Selesai</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number" data-target="50">0</div>
+              <div class="stat-label">Happy Clients</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number" data-target="3">0</div>
+              <div class="stat-label">Tahun Experience</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="section dark">
+      <div class="wrap">
+        <h2>Sertifikasi & Penghargaan</h2>
+        <div class="certifications-grid" id="certificationsGrid">
+          <!-- Sertifikasi akan di-load dari JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Hobbies Gallery Section -->
+    <section id="hobbies" class="section">
+      <div class="wrap">
+        <h2>Galeri Hobi Saya</h2>
+        <div class="hobbies-filter" id="hobbiesFilter">
+          <!-- Filter buttons akan di-load dari JS -->
+        </div>
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Gallery akan di-load dari JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section dark">
+      <div class="wrap">
+        <h2>Portfolio Proyek</h2>
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">Semua</button>
+          <button class="filter-btn" data-filter="web">Website</button>
+          <button class="filter-btn" data-filter="app">App</button>
+          <button class="filter-btn" data-filter="design">Design</button>
+        </div>
+        <div class="projects-grid" id="projectsGrid">
+          <!-- Projects akan di-load dari JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="section">
+      <div class="wrap">
+        <h2>Blog & Artikel</h2>
+        <div class="blog-grid" id="blogGrid">
+          <!-- Blog akan di-load dari JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Music Player Section -->
+    <section id="music" class="section dark">
+      <div class="wrap">
+        <h2>Playlist Favorit</h2>
+        <div class="music-container">
+          <div class="player-card">
+            <div class="player-album" id="playerAlbum">
+              <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=400&auto=format&fit=crop" alt="Album">
+            </div>
+            <div class="player-info">
+              <h3 id="songTitle">Loading...</h3>
+              <p id="songArtist">Loading...</p>
+              <div class="player-controls">
+                <button id="prevBtn">⏮</button>
+                <button id="playBtn">▶</button>
+                <button id="nextBtn">⏭</button>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+              </div>
+            </div>
+          </div>
+          <div class="playlist" id="playlist">
+            <!-- Playlist akan di-load dari JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GitHub Stats Section -->
+    <section id="github" class="section">
+      <div class="wrap">
+        <h2>GitHub Contributions</h2>
+        <div class="github-stats" id="githubStats">
+          <p class="loading">Loading GitHub data...</p>
+        </div>
+        <p class="github-note">Ganti USERNAME di js/main.js untuk melihat stats Anda</p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section dark">
+      <div class="wrap">
+        <h2>Hubungi Saya</h2>
+        <div class="contact-container">
+          <form class="contact-form" id="contactForm">
+            <div class="form-group">
+              <label for="name">Nama</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Pesan</label>
+              <textarea id="message" name="message" rows="6" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+          </form>
+          <div class="contact-info">
+            <h3>Kontak Cepat</h3>
+            <p><strong>Email:</strong> <a href="mailto:email@domain.com">email@domain.com</a></p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/username" target="_blank">github.com/username</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/username" target="_blank">linkedin.com/in/username</a></p>
+            <p><strong>Instagram:</strong> <a href="https://instagram.com/username" target="_blank">@username</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© 2026 Nama Anda. Dibuat dengan ♥ dan JavaScript.</p>
+      <div class="footer-links">
+        <a href="#">GitHub</a>
+        <a href="#">Twitter</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>
