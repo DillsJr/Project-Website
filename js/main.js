@@ -60,28 +60,39 @@ const CONFIG = {
   ],
   certifications: [
     {
-      title: 'Web Development Certification',
-      issuer: 'Udemy',
-      date: 'Jan 2026',
-      description: 'Sertifikasi menyelesaikan kursus complete web development'
+      title: 'Junior Web Programmer',
+      issuer: 'Lembaga Sertifikasi Profesi (LSP)',
+      date: 'Oktober 2023',
+      description: 'Sertifikasi menyelesaikan kursus complete software development',
+      image: 'https://oexmykewzfujlyrbjkut.supabase.co/storage/v1/object/public/certificates/Junior%20Web%20Programming%20(%202023%20).jpg'
     },
     {
-      title: 'JavaScript Mastery',
-      issuer: 'Codecademy',
-      date: 'Dec 2025',
-      description: 'Advanced JavaScript dan ES6+ features'
+      title: 'Developer Administrator',
+      issuer: 'Lembaga Sertifikasi Profesi (LSP)',
+      date: 'Oktober 2023',
+      description: 'Sertifikasi menyelesaikan kursus complete software development',
+      image: 'https://oexmykewzfujlyrbjkut.supabase.co/storage/v1/object/public/certificates/Database%20Administrator%20(%202023%20).jpg'
     },
     {
-      title: 'UI/UX Design Fundamentals',
-      issuer: 'Coursera',
-      date: 'Oct 2025',
-      description: 'Desain user interface dan experience terbaik'
+      title: 'Tenaga Operator Komputer',
+      issuer: 'Lembaga Sertifikasi Profesi (LSP)',
+      date: 'Oktober 2022',
+      description: 'Sertifikasi menyelesaikan kursus complete operator komputer',
+      image: 'https://oexmykewzfujlyrbjkut.supabase.co/storage/v1/object/public/certificates/Operator%20Komputer%20(%202023%20).jpg'
     },
     {
-      title: 'React Advanced Patterns',
-      issuer: 'egghead.io',
-      date: 'Aug 2025',
-      description: 'Advanced React patterns dan hooks'
+      title: 'BUMN Startup Day',
+      issuer: 'BUMN',
+      date: 'September 2022',
+      description: 'Pengetahuan tentang startup dan inovasi di BUMN',
+      image: 'https://oexmykewzfujlyrbjkut.supabase.co/storage/v1/object/public/certificates/E-certificate%20BUMN%20Startup%20Day.jpg'
+    },
+    {
+      title: 'Literasi Digital',
+      issuer: 'KOMINFO',
+      date: 'Agustus 2022',
+      description: 'Etika produksi dan distribusi informasi digital',
+      image: 'https://oexmykewzfujlyrbjkut.supabase.co/storage/v1/object/public/certificates/E-Certificate%20Kominfo_page-0001.jpg'
     }
   ],
   gallery: [
@@ -133,6 +144,34 @@ const CONFIG = {
 };
 // ===== END CONFIG =====
 
+// ===== HELPER: Convert Google Drive URL to viewable format =====
+function convertGoogleDriveUrl(url) {
+  if (!url.includes('drive.google.com')) return url;
+  
+  // Extract File ID from different Google Drive URL formats
+  let fileId = null;
+  
+  if (url.includes('/file/d/')) {
+    // Format: https://drive.google.com/file/d/FILE_ID/view?usp=sharing
+    fileId = url.split('/file/d/')[1].split('/')[0];
+  } else if (url.includes('id=')) {
+    // Format: https://drive.google.com/uc?id=FILE_ID
+    fileId = url.split('id=')[1].split('&')[0];
+  }
+  
+  if (fileId) {
+    return `https://drive.google.com/uc?id=${fileId}&export=view`;
+  }
+  
+  return url;
+}
+
+// Apply conversion to all certification images
+CONFIG.certifications.forEach(cert => {
+  cert.image = convertGoogleDriveUrl(cert.image);
+});
+
+// ===== INITIALIZE =====
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize
   initTheme();
@@ -140,6 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCustomCursor();
   initPreloader();
   initNavigation();
+  initModalHandlers();
   loadProjects();
   loadBlog();
   loadCertifications();
@@ -332,14 +372,44 @@ function loadCertifications() {
     const card = document.createElement('div');
     card.className = 'certification-card';
     card.style.animationDelay = (idx * 0.1) + 's';
+    card.style.cursor = 'pointer';
     card.innerHTML = `
       <h3>${cert.title}</h3>
       <div class="certification-issuer">${cert.issuer}</div>
       <div class="certification-date">${cert.date}</div>
       <p>${cert.description}</p>
+      <div class="cert-view-btn">Lihat Sertifikat</div>
     `;
+    
+    card.addEventListener('click', () => openCertModal(cert));
     grid.appendChild(card);
   });
+}
+
+// ===== MODAL HANDLING =====
+function openCertModal(cert) {
+  const modal = document.getElementById('certModal');
+  const modalImg = document.getElementById('certModalImg');
+  const modalTitle = document.getElementById('certModalTitle');
+  const modalIssuer = document.getElementById('certModalIssuer');
+  const modalDate = document.getElementById('certModalDate');
+  const modalDesc = document.getElementById('certModalDesc');
+  
+  if (!modal) return;
+  
+  modalImg.src = cert.image;
+  modalImg.alt = cert.title;
+  modalTitle.textContent = cert.title;
+  modalIssuer.textContent = cert.issuer;
+  modalDate.textContent = cert.date;
+  modalDesc.textContent = cert.description;
+  
+  modal.classList.add('active');
+}
+
+function closeCertModal() {
+  const modal = document.getElementById('certModal');
+  if (modal) modal.classList.remove('active');
 }
 
 // ===== GALLERY LOADER =====
@@ -550,6 +620,26 @@ function animateCounter(el) {
   }
   
   count();
+}
+
+// ===== MODAL HANDLERS =====
+function initModalHandlers() {
+  const modal = document.getElementById('certModal');
+  const closeBtn = document.querySelector('.cert-modal-close');
+  
+  if (modal && closeBtn) {
+    closeBtn.addEventListener('click', closeCertModal);
+    
+    // Close modal when clicking outside image
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeCertModal();
+    });
+  }
+  
+  // Close modal on ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeCertModal();
+  });
 }
 
 // ===== SMOOTH SCROLL =====
