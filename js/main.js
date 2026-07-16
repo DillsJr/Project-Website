@@ -156,6 +156,10 @@ document.addEventListener('DOMContentLoaded', () => {
   loadGallery();
   initMusicPlayer();
   initContactForm();
+  initHeroTyping();
+  initScrollProgress();
+  initBackToTop();
+  initSectionRevealAnimations();
   initScrollAnimations();
   initStats();
   initEmbedAnimations();
@@ -187,6 +191,67 @@ function updateThemeIcon() {
   }
 }
 
+function initHeroTyping() {
+  const heroSub = document.getElementById('heroSub');
+  if (!heroSub) return;
+
+  const phrases = ['Developer', 'Creator', 'Designer', 'Illustrator', 'Fotografer'];
+  let currentPhrase = 0;
+  let direction = 1;
+  let letterIndex = 0;
+
+  function updateText() {
+    const phrase = phrases[currentPhrase];
+    heroSub.textContent = phrase.slice(0, letterIndex);
+    if (direction === 1) {
+      letterIndex++;
+      if (letterIndex > phrase.length) {
+        direction = -1;
+        setTimeout(updateText, 1200);
+        return;
+      }
+    } else {
+      letterIndex--;
+      if (letterIndex < 0) {
+        direction = 1;
+        currentPhrase = (currentPhrase + 1) % phrases.length;
+      }
+    }
+    setTimeout(updateText, direction === 1 ? 90 : 40);
+  }
+
+  updateText();
+}
+
+function initScrollProgress() {
+  const bar = document.getElementById('progressBar');
+  if (!bar) return;
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    bar.style.width = `${progress}%`;
+  }, { passive: true });
+}
+
+function initBackToTop() {
+  const button = document.getElementById('backToTop');
+  if (!button) return;
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 520) {
+      button.classList.add('visible');
+    } else {
+      button.classList.remove('visible');
+    }
+  }, { passive: true });
+
+  button.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
 // ===== PARTICLES BACKGROUND =====
 function createParticles() {
   const container = document.getElementById('particlesContainer');
@@ -213,6 +278,8 @@ function initCustomCursor() {
   let mouseX = 0, mouseY = 0;
   let cursorX = 0, cursorY = 0;
   
+  const interactiveSelectors = ['a', 'button', '.nav-toggle', '.filter-btn', '.hobby-filter-btn', '.project-card', '.gallery-item', '.certification-card', '.btn'];
+
   document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
@@ -220,6 +287,15 @@ function initCustomCursor() {
     cursorDot.style.left = mouseX - 3 + 'px';
     cursorDot.style.top = mouseY - 3 + 'px';
     cursorDot.style.opacity = '1';
+    
+    const hovered = interactiveSelectors.some(selector => e.target.closest(selector));
+    if (hovered) {
+      cursor.classList.add('hovered');
+      cursorDot.classList.add('hovered');
+    } else {
+      cursor.classList.remove('hovered');
+      cursorDot.classList.remove('hovered');
+    }
   });
   
   function animateCursor() {
@@ -372,10 +448,11 @@ function loadGallery() {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        galleryObserver.unobserve(entry.target);
+      } else {
+        entry.target.classList.remove('visible');
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.05, rootMargin: '0px 0px -120px 0px' });
 
   // Create filter buttons
   categories.forEach((cat, idx) => {
@@ -402,16 +479,22 @@ function loadGallery() {
         div.className = 'gallery-item';
         div.style.animationDelay = (idx * 0.05) + 's';
         div.innerHTML = `
-          <a class="gallery-link" href="${item.link || '#'}" target="_blank" rel="noopener noreferrer">
+          <div class="gallery-link">
             <img src="${item.image}" alt="${item.title}">
             <div class="gallery-overlay">
               <span class="gallery-category">${item.category}</span>
               <h3 class="gallery-title">${item.title}</h3>
             </div>
-          </a>
+          </div>
         `;
+
         gallery.appendChild(div);
         galleryObserver.observe(div);
+
+        const section = gallery.closest('section');
+        if (section && section.classList.contains('visible')) {
+          div.classList.add('visible');
+        }
 
         const image = div.querySelector('img');
         div.addEventListener('mousemove', (event) => {
@@ -570,6 +653,31 @@ function initScrollAnimations() {
   });
 }
 
+function initSectionRevealAnimations() {
+  const sections = document.querySelectorAll('#about, #certifications, #hobbies, #projects, #music');
+  if (!sections.length) return;
+
+  sections.forEach(section => section.classList.add('reveal'));
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const isVisible = entry.isIntersecting;
+      entry.target.classList.toggle('visible', isVisible);
+
+      entry.target.querySelectorAll('.section-header, .about-grid, .certifications-grid, .gallery-grid, .projects-grid, .spotify-grid').forEach(child => {
+        child.classList.toggle('visible', isVisible);
+      });
+
+      entry.target.querySelectorAll('.gallery-item').forEach((item, idx) => {
+        item.style.transitionDelay = `${idx * 60}ms`;
+        item.classList.toggle('visible', isVisible);
+      });
+    });
+  }, { threshold: 0.18 });
+
+  sections.forEach(section => sectionObserver.observe(section));
+}
+
 // ===== COUNTER ANIMATION =====
 function initStats() {
   const statNumbers = document.querySelectorAll('.stat-number');
@@ -632,14 +740,11 @@ function initEmbedAnimations() {
     el.style.transitionDelay = `${idx * 120}ms`;
   });
 
-  const obs = new IntersectionObserver((entries, observer) => {
+  const obs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate');
-        observer.unobserve(entry.target);
-      }
+      entry.target.classList.toggle('animate', entry.isIntersecting);
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.18 });
 
   embeds.forEach(el => obs.observe(el));
 }
