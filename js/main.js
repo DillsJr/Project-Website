@@ -18,7 +18,7 @@ const CONFIG = {
       title: 'Project 2: Mobile App',
       category: 'app',
       description: 'Aplikasi iOS dengan React Native',
-      image: 'https://images.unsplash.com/photo-1512941691920-25bda36b1407?q=80&w=600&auto=format&fit=crop'
+      image: 'https://oexmykewzfujlyrbjkut.supabase.co/storage/v1/object/public/proyek/azamat-e-eb1cgnNIazI-unsplash.jpg'
     },
     {
       title: 'Project 3: Design System',
@@ -30,7 +30,7 @@ const CONFIG = {
       title: 'Project 4: Dashboard',
       category: 'web',
       description: 'Analytics dashboard real-time',
-      image: 'https://images.unsplash.com/photo-1460925895917-adf4e565db18?q=80&w=600&auto=format&fit=crop'
+      image: 'https://oexmykewzfujlyrbjkut.supabase.co/storage/v1/object/public/proyek/stephen-dawson-qwtCeJ5cLYs-unsplash.jpg'
     }
   ],
   playlist: [
@@ -664,7 +664,7 @@ function initSectionRevealAnimations() {
       const isVisible = entry.isIntersecting;
       entry.target.classList.toggle('visible', isVisible);
 
-      entry.target.querySelectorAll('.section-header, .about-grid, .certifications-grid, .gallery-grid, .projects-grid, .spotify-grid').forEach(child => {
+      entry.target.querySelectorAll('.section-header, .about-grid, .about-visual, .about-copy, .about-points .point, .about-stats .stat, .certifications-grid, .certifications-grid .certification-card, .hobbies-filter, .gallery-grid, .projects-grid, .projects-grid .project-card, .spotify-grid .embed').forEach(child => {
         child.classList.toggle('visible', isVisible);
       });
 
